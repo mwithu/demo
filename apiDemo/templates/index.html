@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
+        crossorigin="anonymous">
+  <title>Django Cards</title>
+</head>
+<body >
+
+<div style="display: flex; flex-direction: row; flex-wrap: wrap; margin-left: 15px;">
+{% comment %} {% if auth == True %} {% endcomment %}
+  {% for card in cards %}
+  {#  Single Card Template:#}
+  <div class="card" style="width: 16rem; margin: 10px; display: flex; flex-direction: row; border: 2px solid black;">
+    <img style="width: 5rem;
+    height: 5rem;" src="{{ card.image }}" class="card-img-top" >
+    <div class="card-body">
+      <div> 
+        <h5 class="card-title">{{ card.name }}</h5>
+      </div>
+      <p class="card-text">{{ card.college }} </p>
+      <a href="/command/{{ card.id }}/delete" style="margin-left: -90px;"; class="btn btn-primary">Delete</a>
+      <span style="margin-left: 13px;"> Roll No. : {{ card.roll }} </span>
+    </div>
+  </div>
+  {% endfor %}
+{% comment %} {% else %}
+ {% default %} {% endcomment %}
+{% comment %} {% endif %} {% endcomment %}
+</div>
+
+</body>
+</html>
